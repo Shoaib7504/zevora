@@ -195,7 +195,7 @@ export default function AdminOverview() {
             <div className="mt-5 space-y-4 text-sm">
               {[
                 { label: 'MongoDB Atlas', status: isError ? 'Unreachable' : 'Connected', ok: !isError },
-                { label: 'Backend API (port 5000)', status: isError ? 'Offline' : 'Running', ok: !isError },
+                { label: 'Backend API', status: isError ? 'Offline' : 'Running', ok: !isError },
                 { label: 'Products seeded', status: `${data?.totalProducts || 0} documents`, ok: true },
                 { label: 'Users registered', status: `${data?.totalUsers || 0} accounts`, ok: true },
                 { label: 'Reviews collected', status: `${data?.totalReviews || 0} entries`, ok: true },

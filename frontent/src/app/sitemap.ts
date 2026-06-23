@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://zevora-frontend.vercel.app';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://zevora-eta.vercel.app/api';
 
   const staticRoutes = [
     { url: baseUrl, lastModified: new Date() },
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Fetch products list from backend service to map product detail routes
-    const res = await fetch('http://localhost:5000/api/products?limit=100', {
+    const res = await fetch(`${apiUrl}/products?limit=100`, {
       next: { revalidate: 3600 } // revalidate cache every hour
     });
     const data = await res.json();
